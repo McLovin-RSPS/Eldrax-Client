@@ -5624,7 +5624,22 @@ case 33100:
 							itemDef.modelId = 800031;
 							itemDef.inventoryOptions = new String[] { null, "Wear", null, null, "Drop" };
 			                break;
-			                				    		
+			                
+						case 33476: 
+							itemDef.name = "Korasi sword";
+							itemDef.modelZoom = 1744;
+							itemDef.modelRotationX = 330;
+							itemDef.modelRotationY = 1505;
+							itemDef.translateX = 0;
+							itemDef.translateYZ = 0;
+							itemDef.inventoryOptions = new String[] { null, "Wield", null, null, "Drop" };
+							itemDef.stackable = false;
+							itemDef.description = "A korasi sword!";
+							itemDef.modelId = 800033;
+							itemDef.maleModel = 800034;
+							itemDef.femaleModel = 800034;
+							break;
+							
 	}
 	}
 	
