@@ -112,6 +112,14 @@ public class Buffer extends Cacheable {
 		return ((payload[position - 2] & 0xff) << 8) + (payload[position - 1] & 0xff);
 	}
 	
+	public int readDWord() {
+		position += 4;
+		return ((payload[position - 4] & 0xff) << 24)
+				+ ((payload[position - 3] & 0xff) << 16)
+				+ ((payload[position - 2] & 0xff) << 8)
+				+ (payload[position - 1] & 0xff);
+	}
+	
     public int readUSmart2() {
         int baseVal = 0;
         int lastVal = 0;

@@ -4,6 +4,7 @@ import java.applet.AppletContext;
 import java.awt.AWTException;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -99,6 +100,7 @@ import com.client.cache.provider.Resource;
 import com.client.cache.provider.ResourceProvider;
 import com.client.camera.Camera;
 import com.client.camera.CameraMove;
+import com.client.capatcha.ReCaptchaComponent;
 import com.client.collection.DoubleEndedQueue;
 import com.client.collection.Linkable;
 import com.client.config.Configuration;
@@ -171,6 +173,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
+
 import net.runelite.client.ui.ClientUI;
 
 public class Client extends JPanel implements Runnable {
@@ -189,8 +192,16 @@ public class Client extends JPanel implements Runnable {
 	public int gambleXitem = 0;
 	
 	private boolean gamble;
-
 	
+    public static ReCaptchaComponent reCaptcha;
+    public static final boolean CAPTCHA_ENABLED = true;
+    String[] captchaId = { "+", "-", "*" };
+    Dialog captchaDialog;
+    Boolean captchaRequired = false;
+    int num1, num2, cType;
+    Object captchaAnswer = null;
+    Object captchaLock = new Object();
+    
 	public void initializeDropDowns() {
 		Dropdown.updateSelections();
 	}
@@ -18752,7 +18763,7 @@ public class Client extends JPanel implements Runnable {
 	public static int anInt34;
 
 	public static double brightness = 0.8;
-
+	
 	private void drawConsole() {
 		  if(consoleOpen) {
 		    	Rasterizer3D.drawTransparentBox(0, 0, currentGameWidth, 120, 0, 200);

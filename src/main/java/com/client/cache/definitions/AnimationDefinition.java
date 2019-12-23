@@ -15,34 +15,22 @@ import com.client.utilities.FileOperations;
 
 public final class AnimationDefinition {
 	
-	private static Buffer stream667;
-	public DataType dataType;
+	public static int length2;
 	
 	public static void unpackConfig(Archive streamLoader) {
+		//Buffer stream2 = new Buffer(FileOperations.ReadFile(Signlink.findcachedirORIG() + "dara602/602seq.dat"));
 		Buffer stream = new Buffer(streamLoader.getDataForName("seq.dat"));
-		stream667 = new Buffer(streamLoader.getDataForName("seq2.dat"));
-		//stream667 = new Buffer(FileOperations.ReadFile(Signlink.findcachedirORIG() + "/data/seq2.dat"));
-
 		int length = stream.readUnsignedWord();
-		//int length667 = stream667.readUnsignedWord();
-
+		//length2 = stream2.readUnsignedWord();
 		if (anims == null)
-			anims = new AnimationDefinition[length + 6000];
-	
-		for (int j = 0; j < anims.length; j++) {
-			if (j >= length && j <= length + 6000) {
-				continue;
-			}
-			
+			anims = new AnimationDefinition[(length + length2)];
+		for (int j = 0; j < (length + length2); j++) {
 			if (anims[j] == null)
 				anims[j] = new AnimationDefinition();
-			if (j > length + 6000) {
-				anims[j].dataType = DataType.PRE_EOC_667;
-				anims[j].readValues667(j, stream667);
-
-			} else {
+			//if (j < length)
 				anims[j].readValues(stream);
-			}
+			//else
+				//anims[j].readValues602(stream2);
 			  
 			if (j == 719) {
 				anims[j].playerMainhand = 28232;
@@ -667,110 +655,73 @@ public final class AnimationDefinition {
 		return duration;
 	}
 
-	 private void readValues667(int id, Buffer stream)
-	  {
-	    int i;
-	    while ((i = stream.readUnsignedByte()) != 0)
-	    {
-	      if (i == 1) {
+	public void readValues602(Buffer stream) {
+		do {
+			int i = stream.readUnsignedByte();
+			if (i == 0)
+				break;
+			if (i == 1) {
 				frameCount = stream.readUnsignedWord();
 				primaryFrames = new int[frameCount];
-				secondaryFrames = new int[frameCount];
 				durations = new int[frameCount];
-				
-				for (int j = 0; j < frameCount; j++)
-					durations[j] = stream.readShort();
-
-
-				for (int j = 0; j < frameCount; j++) {
-					primaryFrames[j] = stream.readShort();
-					secondaryFrames[j] = -1;
+				secondaryFrames = new int[frameCount];
+				for (int i_ = 0; i_ < frameCount; i_++) {
+					primaryFrames[i_] = stream.readDWord();
+					durations[i_] = -1;
+					secondaryFrames[i_] = stream.readUnsignedByte();
 				}
-				
-
-				for (int j = 0; j < frameCount; j++) {
-					primaryFrames[j] += stream.readShort() << 16;
-				}
-	      }
-	      else if (i == 2)
-	      {
-	        this.loopOffset = stream.readUnsignedWord();
-	      }
+				/*for (int i_ = 0; i_ < anInt352; i_++)
+					anIntArray355[i_] = stream.readUnsignedByte();*/
+			} else if (i == 2)
+				loopOffset = stream.readUnsignedWord();
 			else if (i == 3) {
-				int count = stream.readUnsignedByte();
-				interleaveOrder = new int[count + 1];
-				for (int l = 0; l < count; l++)
+				int k = stream.readUnsignedByte();
+				interleaveOrder = new int[k + 1];
+				for (int l = 0; l < k; l++)
 					interleaveOrder[l] = stream.readUnsignedByte();
-				interleaveOrder[count] = 9999999;
+				interleaveOrder[k] = 0x98967f;
+			} else if (i == 4)
+				stretches = true;
+			else if (i == 5)
+				priority = stream.readUnsignedByte();
+			else if (i == 6)
+				playerOffhand = stream.readUnsignedWord();
+			else if (i == 7)
+				playerMainhand = stream.readUnsignedWord();
+			else if (i == 8)
+				maximumLoops = stream.readUnsignedByte();
+			else if (i == 9)
+				animatingPrecedence = stream.readUnsignedByte();
+			else if (i == 10)
+				walkingPrecedence = stream.readUnsignedByte();
+			else if (i == 11)
+				replayMode = stream.readUnsignedByte();
+			else
+				System.out.println("Unrecognized seq.dat config code: " + i);
+		} while (true);
+		if (frameCount == 0) {
+			frameCount = 1;
+			primaryFrames = new int[1];
+			primaryFrames[0] = -1;
+			durations = new int[1];
+			durations[0] = -1;
+			secondaryFrames = new int[1];
+			secondaryFrames[0] = -1;
+		}
+
+		if (animatingPrecedence == -1)
+			if (interleaveOrder != null)
+				animatingPrecedence = 2;
+			else
+				animatingPrecedence = 0;
+		if (walkingPrecedence == -1) {
+			if (interleaveOrder != null) {
+				walkingPrecedence = 2;
+				return;
 			}
-	      else if (i == 4)
-	      {
-	        this.stretches = true;
-	      }
-	      else if (i == 5)
-	      {
-	        this.priority = stream.readUnsignedByte();
-	      }
-	      else if (i == 6)
-	      {
-	        this.playerOffhand = stream.readUnsignedWord();
-	      }
-	      else if (i == 7)
-	      {
-	        this.playerMainhand = stream.readUnsignedWord();
-	      }
-	      else if (i == 8)
-	      {
-	        this.maximumLoops = stream.readUnsignedByte();
-	      }
-	      else if (i == 9)
-	      {
-	        this.animatingPrecedence = stream.readUnsignedByte();
-	      }
-	      else if (i == 10)
-	      {
-	        this.walkingPrecedence = stream.readUnsignedByte();
-	      }
-	      else if (i == 11)
-	      {
-	        this.replayMode = stream.readUnsignedByte();
-	      }
-	      else if (i == 12)
-	      {
-	        stream.readUnsignedWord();
-	      }
-	      else
-	      {
-	        System.out.println("Error unrecognised seq config code: " + i);
-	      }
-	    }
-	    if (this.frameCount == 0)
-	    {
-	      this.frameCount = 1;
-	      this.primaryFrames = new int[1];
-	      this.primaryFrames[0] = -1;
-	      this.secondaryFrames = new int[1];
-	      this.secondaryFrames[0] = -1;
-	      this.durations = new int[1];
-	      this.durations[0] = -1;
-	    }
-	    if (this.animatingPrecedence == -1) {
-	      if (this.interleaveOrder != null) {
-	        this.animatingPrecedence = 2;
-	      } else {
-	        this.animatingPrecedence = 0;
-	      }
-	    }
-	    if (this.walkingPrecedence == -1)
-	    {
-	      if (this.interleaveOrder != null)
-	      {
-	        this.walkingPrecedence = 2;
-	        return;
-	      }
-	      this.walkingPrecedence = 0;
-	    }
-	  }
+			walkingPrecedence = 0;
+		}
+	}
 	
 	private void readValues(Buffer stream) {
 		int i;
