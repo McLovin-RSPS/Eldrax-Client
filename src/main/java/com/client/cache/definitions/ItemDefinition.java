@@ -5639,6 +5639,7 @@ case 33100:
 							itemDef.maleModel = 800034;
 							itemDef.femaleModel = 800034;
 							break;
+							
 	}
 	}
 	
