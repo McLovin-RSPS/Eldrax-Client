@@ -90,7 +90,7 @@ public class Interfaces extends RSInterface {
 		addStaffSpecialWidget();
 		skillTabWithHovers(defaultTextDrawingAreas);
 		normals(defaultTextDrawingAreas);
-		statsComparatorInterface(defaultTextDrawingAreas);
+		//statsComparatorInterface(defaultTextDrawingAreas);
 		gambleInterface(defaultTextDrawingAreas);
 		HitOrStay(defaultTextDrawingAreas);
 		treasureHunter(defaultTextDrawingAreas);
@@ -359,128 +359,6 @@ public class Interfaces extends RSInterface {
 		id++;
 
 	}
-	
-	public static void statsComparatorInterface(TextDrawingArea[] tda) {
-		RSInterface main = addInterface(53500);
-		addSprite(53501, 1053, "interfaces/itemcomparator/sprite");
-		addButton(53502, 954, "interfaces/itemcomparator/sprite", "Compare Stats");
-		addText(53503, "Compare Stats", 0x1eb0b2, false, true, 100, tda, 2);
-		addText(53504, "Stats Comparator", 0xf45042, false, true, 100, tda, 2);		
-		addButton(53490, 892, "interfaces/itemcomparator/sprite", "Close Interface");
-		main.totalChildren(38);
-		main.child(0, 53501, 15, 5); // don't change
-		main.child(1, 53502, 285, 303); // don't change
-		main.child(2, 53503, 295, 307); // 300, 310
-		main.child(3, 53504, 215, 15); // don't change
-		main.child(4, 53505, 0, 40); // don't change
-
-		/**
-		 * Stats texts etc
-		 */
-
-		addText(56000, "1st Item Name", 0xfff423, false, true, 100, tda, 2);
-		addText(56001, "2nd Item Name", 0xfff423, false, true, 100, tda, 2);
-
-		// Stats (First side)
-
-		addText(56004, "Stab: ", 0xfc7a16, false, true, 100, tda, 2);
-		addText(56005, "Slash: ", 0xfc7a16, false, true, 100, tda, 2);
-		addText(56006, "Crush: ", 0xfc7a16, false, true, 100, tda, 2);
-		addText(56007, "Magic: ", 0xfc7a16, false, true, 100, tda, 2);
-		addText(56008, "Range: ", 0xfc7a16, false, true, 100, tda, 2);
-		addText(56009, "Defence Bonuses", 0xdadded, false, true, 100, tda, 2);
-		addText(56010, "Stab: ", 0xfc7a16, false, true, 100, tda, 2);
-		addText(56011, "Slash: ", 0xfc7a16, false, true, 100, tda, 2);
-		addText(56012, "Crush ", 0xfc7a16, false, true, 100, tda, 2);
-		addText(56013, "Magic ", 0xfc7a16, false, true, 100, tda, 2);
-		addText(56014, "Range ", 0xfc7a16, false, true, 100, tda, 2);
-		addText(56015, "Summoning ", 0xfc7a16, false, true, 100, tda, 2);
-		addText(56016, "Other Bonuses", 0xdadded, false, true, 100, tda, 2);
-		addText(56017, "Str: ", 0xfc7a16, false, true, 100, tda, 2);
-		addText(56018, "Pray: ", 0xfc7a16, false, true, 100, tda, 2);
-		// Stats (Second side)
-
-		addText(56019, "Stab: ", 0xfc7a16, false, true, 100, tda, 2);
-		addText(56020, "Slash: ", 0xfc7a16, false, true, 100, tda, 2);
-		addText(56021, "Crush: ", 0xfc7a16, false, true, 100, tda, 2);
-		addText(56022, "Magic: ", 0xfc7a16, false, true, 100, tda, 2);
-		addText(56023, "Range: ", 0xfc7a16, false, true, 100, tda, 2);
-		addText(56024, "Defence Bonuses", 0xdadded, false, true, 100, tda, 2);
-		addText(56025, "Stab: ", 0xfc7a16, false, true, 100, tda, 2);
-		addText(56026, "Slash: ", 0xfc7a16, false, true, 100, tda, 2);
-		addText(56027, "Crush ", 0xfc7a16, false, true, 100, tda, 2);
-		addText(56028, "Magic ", 0xfc7a16, false, true, 100, tda, 2);
-		addText(56029, "Range ", 0xfc7a16, false, true, 100, tda, 2);
-		addText(56030, "Summoning ", 0xfc7a16, false, true, 100, tda, 2);
-		addText(56031, "Other Bonuses", 0xdadded, false, true, 100, tda, 2);
-		addText(56032, "Str: ", 0xfc7a16, false, true, 100, tda, 2);
-		addText(56033, "Pray: ", 0xfc7a16, false, true, 100, tda, 2);
-		main.child(5, 56000, 200, 40);
-		main.child(6, 56001, 350, 40);
-
-		// 1st side
-		main.child(7, 56004, 200, 60);
-		main.child(8, 56005, 200, 75);
-		main.child(9, 56006, 200, 90);
-		main.child(10, 56007, 200, 105);
-		main.child(11, 56008, 200, 120);
-		main.child(12, 56009, 210, 145);
-		main.child(13, 56010, 200, 167);
-		main.child(14, 56011, 200, 183);
-		main.child(15, 56012, 200, 199);
-		main.child(16, 56013, 200, 215);
-		main.child(17, 56014, 200, 231);
-		main.child(18, 56015, 200, 248);
-		main.child(19, 56016, 210, 270);
-		main.child(20, 56017, 200, 292);
-		main.child(21, 56018, 200, 307);
-
-		// 2nd side
-		main.child(22, 56019, 350, 60);
-		main.child(23, 56020, 350, 75);
-		main.child(24, 56021, 350, 90);
-		main.child(25, 56022, 350, 105);
-		main.child(26, 56023, 350, 120);
-		main.child(27, 56024, 360, 145);
-		main.child(28, 56025, 350, 167);
-		main.child(29, 56026, 350, 183);
-		main.child(30, 56027, 350, 199);
-		main.child(31, 56028, 350, 215);
-		main.child(32, 56029, 350, 231);
-		main.child(33, 56030, 350, 248);
-		main.child(34, 56031, 360, 270);
-		main.child(35, 56032, 408, 292);
-		main.child(36, 56033, 408, 307);
-		main.child(37, 53490, 474, 10);
-
-		RSInterface scroll = addTabInterface(53505);
-		scroll.height = 282;
-		scroll.width = 175;
-		scroll.scrollMax = 8500;
-
-		scroll.totalChildren(478);
-		addButton(53508, 892, "interfaces/mysterybox/sprite", "Close");
-		addButton(53508, 931, "interfaces/itemcomparator/sprite", "CSearch Items");
-		addButton(54002, 954, "interfaces/itemcomparator/sprite", "Reset Itemss");
-		addText(54003, "Reset Items", 0xff160a, false, true, 100, tda, 2);
-
-		scroll.child(475, 53508, 22, 0); // search button
-		scroll.child(476, 54002, 23, 35); // Reset items button
-		scroll.child(477, 54003, 40, 39); // text (Reset items)
-
-		int id = 53510;
-		int index = 0;
-		int child = 0;
-		int x = 27;
-		int y = 65;
-		for (int i = 0; i < 475; i++) {
-			addClickableText(id, "Item name " + id, "Compare", tda, 1, 0xeb981f, false, true, 632);
-			scroll.child(child++, id++, x, y + 2);
-			y += 15;
-		}
-
-	}
-
 	
 	public static void printItf(int parentId, boolean recursive) {
 		PrintStream ps = System.out;

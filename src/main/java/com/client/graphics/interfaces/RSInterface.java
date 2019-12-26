@@ -3485,7 +3485,7 @@ public class RSInterface {
 		addText(44307, "Wilderness", tda, 2, 0xFF981F, true, true);
 		addText(44308, "Bosses", tda, 2, 0xFF981F, true, true);
 		addText(44309, "Skilling", tda, 2, 0xFF981F, true, true);
-		addText(44340, "Cities", tda, 2, 0xFF981F, true, true);
+		addText(44340, "Cities/Lands", tda, 2, 0xFF981F, true, true);
 		addText(44341, "Dungeons", tda, 2, 0xFF981F, true, true);
 
 		RSInterface scroller = addTabInterface(28700);
