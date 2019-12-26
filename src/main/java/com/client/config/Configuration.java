@@ -63,7 +63,7 @@ public class Configuration {
 
 	public static final String CACHE_NAME = "Eldrax";
 
-	public static final String CACHELINK = "http://www.mistexps.com/client/Mistex.zip"; //  cache link
+	public static final String CACHELINK = "https://www.dropbox.com/s/9qvpjhlqyn466g2/Eldrax.zip?dl=1"; //  cache link
 
     
     public static int CACHE_VERSION_LOADER = 2;

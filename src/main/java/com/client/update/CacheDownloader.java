@@ -33,7 +33,7 @@ public class CacheDownloader {
 
 	private String CACHE_LINK = Configuration.CACHELINK;
 
-	private static final String VERSION_FILE_URL = "http://www.mistexps.com/client/version.txt";
+	private static final String VERSION_FILE_URL = "https://www.dropbox.com/s/tywihr39566bp81/version.txt?dl=1";
 	private Path FILE_LOCATION = Paths.get(getCacheDir(), getArchivedName());
 
 	public CacheDownloader(Client client) {
