@@ -21,7 +21,7 @@ public final class TextDrawingArea extends Raster {
 		anIntArray1496 = new int[256];
 		aRandom1498 = new Random();
 		aBoolean1499 = false;
-		Buffer stream = new Buffer(streamLoader.getDataForName(s + ".dat"));
+		Buffer stream = new Buffer(streamLoader.getDataForName(s + ".dat"));//
 		Buffer stream_1 = new Buffer(streamLoader.getDataForName("index.dat"));
 		stream_1.position = stream.readShort() + 4;
 		int k = stream_1.readUnsignedByte();
