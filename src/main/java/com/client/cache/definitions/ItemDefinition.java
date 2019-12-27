@@ -5639,6 +5639,16 @@ case 33100:
 							itemDef.maleModel = 800034;
 							itemDef.femaleModel = 800034;
 							break;
+							
+					    case 33477: 
+					    	itemDef.copyAllButModels(ItemDefinition.forID(4151));
+					        itemDef.name = "Cryomatic brutal whip";
+					        itemDef.description = "It's a cryomatic brutal whip.";
+					        itemDef.modelId = 800036;
+					        itemDef.femaleModel = 800035;
+					        itemDef.maleModel = 800035;
+							itemDef.inventoryOptions = new String[] { null, "Wear", null, null, "Drop" };
+					        break;
 	}
 	}
 	

@@ -414,6 +414,13 @@ public final class ObjectDefinition {
 			objectDef.overheadColour = 0xffffff;
 			objectDef.overheadShadow = 0x000000;
 			break;
+			
+		case 2816:
+			objectDef.name = "Crashed Star";
+			objectDef.actions = new String[] { "Mine", null, null, null, null };
+			break;
+			
+			
 		case 7435:
 		objectDef.modifiedModelColors = new int [] {231, 63684, 59945, 60312, 61332, 60304};
 		objectDef.originalModelColors = new int [] {38798, 38798, 0, 38798, 38798, 0};

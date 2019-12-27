@@ -2805,6 +2805,32 @@ public class Client extends JPanel implements Runnable {
 		} catch (Exception e) {
 		}
 	}
+	
+	private void drawProperHpBar() {
+        int health = currentStats[4];
+        double fillPercent = health * 2.51 > 251 ? 251 : health * 2.51; // 2.51 is pixel density.
+        TextDrawingArea.drawAlphaBox(8, 292 - (int) fillPercent, 18, (int) fillPercent, 16711680, 135);
+        //Sprite toDraw = cacheSprite[766].getResizedSprite(cacheSprite[766], 16, 14);
+        Sprite toDraw = Sprite.getEmptySprite(16, 14);
+        toDraw.drawSprite(9, 47);
+        //toDraw.drawGlow(0xff99ff);
+
+        // toDraw.rotate(22, 40, 15);
+        newSmallFont.drawCenteredString(Integer.toString(health), 16, 74, getOrbTextColor(health), 1);
+    }
+    private void drawProperPrayBar() {
+        int prayer = currentStats[6];
+        double fillPercent = prayer * 2.51 > 251 ? 251 : prayer * 2.51; // 2.51 is pixel density.
+        TextDrawingArea.drawAlphaBox(218, 292 - (int) fillPercent, 18, (int) fillPercent, 3328200, 135);
+        Sprite toDraw = Sprite.getEmptySprite(18, 16);
+        toDraw.drawAdvancedSprite(219, 47);
+        newSmallFont.drawCenteredString(Integer.toString(prayer), 226, 74, getOrbTextColor(prayer), 1);
+    }
+    
+    private void drawBars() {
+        drawProperHpBar();
+        drawProperPrayBar();
+    }
 
 	private void delFriend(long l) {
 		try {
@@ -2843,6 +2869,7 @@ public class Client extends JPanel implements Runnable {
 			tabAreaFixed.drawSprite(0, 0);
 			if (invOverlayInterfaceID == -1)
 				drawTabs();
+				drawBars();
 
 		} else {
 			(stackTabs() ? tabAreaResizable[1] : tabAreaResizable[2]).drawSpriteWithOpacity(
@@ -2854,6 +2881,7 @@ public class Client extends JPanel implements Runnable {
 
 			if (invOverlayInterfaceID == -1)
 				drawTabs();
+				drawBars();
 		}
 		int y = stackTabs() ? 73 : 37;
 		if (invOverlayInterfaceID != -1) {
