@@ -2806,22 +2806,24 @@ public class Client extends JPanel implements Runnable {
 		}
 	}
 	
+	private Sprite[] hpbarsprite = new Sprite[766];
+	private Sprite[] prayerbarsprite = new Sprite[25];
+	
 	private void drawProperHpBar() {
-        int health = currentStats[4];
+        int health = maxStats[3] / 1;
         double fillPercent = health * 2.51 > 251 ? 251 : health * 2.51; // 2.51 is pixel density.
-        TextDrawingArea.drawAlphaBox(8, 292 - (int) fillPercent, 18, (int) fillPercent, 16711680, 135);
+        TextDrawingArea.drawAlphaBox(12, 292 - (int) fillPercent, 18, (int) fillPercent, 16711680, 135);
         //Sprite toDraw = cacheSprite[766].getResizedSprite(cacheSprite[766], 16, 14);
         Sprite toDraw = Sprite.getEmptySprite(16, 14);
         toDraw.drawSprite(9, 47);
         //toDraw.drawGlow(0xff99ff);
-
         // toDraw.rotate(22, 40, 15);
         newSmallFont.drawCenteredString(Integer.toString(health), 16, 74, getOrbTextColor(health), 1);
     }
     private void drawProperPrayBar() {
-        int prayer = currentStats[6];
+        int prayer = maxStats[5] / 1;
         double fillPercent = prayer * 2.51 > 251 ? 251 : prayer * 2.51; // 2.51 is pixel density.
-        TextDrawingArea.drawAlphaBox(218, 292 - (int) fillPercent, 18, (int) fillPercent, 3328200, 135);
+        TextDrawingArea.drawAlphaBox(224, 292 - (int) fillPercent, 18, (int) fillPercent, 3328200, 135);
         Sprite toDraw = Sprite.getEmptySprite(18, 16);
         toDraw.drawAdvancedSprite(219, 47);
         newSmallFont.drawCenteredString(Integer.toString(prayer), 226, 74, getOrbTextColor(prayer), 1);
