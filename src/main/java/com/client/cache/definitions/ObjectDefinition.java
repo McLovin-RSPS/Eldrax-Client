@@ -106,6 +106,23 @@ public final class ObjectDefinition {
 			objectDef.hasActions = true;
 			objectDef.castsShadow = false;
 			break;
+			
+			
+		case 38660:
+			objectDef.actions = new String[] { "Teleport", null, null, null, null };
+			objectDef.name = "Crashed Star";
+			objectDef.overheadTextHeight = 450;
+			objectDef.overheadText = "Crashed Star";
+			objectDef.overheadTextOpacity = 0.8f;
+			objectDef.font = Client.instance.newSmallFont;
+			objectDef.overheadColour = 0xff0000;
+			objectDef.overheadShadow = 0xffff00;			
+			objectDef.hasActions = true;
+			objectDef.castsShadow = false;
+			break;
+			
+			
+			
 		case 7453:
 		case 7461:
 		case 7454:

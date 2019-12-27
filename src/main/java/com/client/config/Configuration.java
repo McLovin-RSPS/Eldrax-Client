@@ -38,7 +38,7 @@ public class Configuration {
 	public static final String CLIENT_TITLE = "Eldrax";
 	public static final int CLIENT_VERSION = 5;
     public static Boolean LIVE_SERVER = true;
-    public static String IP = "0.0.0.0";
+    public static String IP = "0.0.0.0"; //107.167.88.138
 	public static final int PORT = 43594;
 	
 	public static final boolean THREADED_RENDERING = false;
@@ -71,9 +71,9 @@ public class Configuration {
     /*
      * Discord Rich Presence Settings
      */
-    public static String AppId = "549115968354385931";
-    public static String line1 = "#1 Economy Experience";
-    public static String line2 = "www.mistexps.com";
+    public static String AppId = "463996796511715340";
+    public static String line1 = "#1 osrs economy server";
+    public static String line2 = "www.eldrax-ps.com";
     public static String image = "";
 	
 	/**
